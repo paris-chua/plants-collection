@@ -21,7 +21,7 @@ This repo is designed to provide space to code a fullstack app. It contains node
 <details>
   <summary>More about using <code>.scss</code> files</summary>
 
-  - Any css should be written in `styles/index.scss`
+  - Any css should be written in `client/styles/index.scss`
   - The when the project bundles, a <code>.css</code> file will be created in the public folder. Each time the project bundles this file will be overwritten to match the css within your styles folder.
   - You can use normal css styling or make use of the extra features of [sass](https://sass-lang.com/documentation/)
 </details>
