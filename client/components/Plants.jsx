@@ -1,15 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-function Plants(props) {
-  const Plants = useSelector((redux) => redux.plants)
+function Plants() {
+  const plants = useSelector((redux) => redux.plants)
   return (
     <>
-      {props.plants.map((e) => (
+      {plants.map((e) => (
         <div key={e.id}>
+          <img src={e.img} alt="plant" width="400px" height="auto" />
           <p>Common Name: {e.common_name}</p>
           <p>Botanical Name: {e.botanical_name}</p>
-          <img src={e.img} alt="plant image" />
         </div>
       ))}
     </>

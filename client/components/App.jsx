@@ -8,7 +8,7 @@ function App() {
         <h1>My Collection</h1>
       </header>
       <section className="main">
-        <Plants plants={plants} />
+        <Plants />
         {/* add your code here */}
       </section>
     </>
