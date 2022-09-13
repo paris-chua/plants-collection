@@ -1,4 +1,5 @@
 import React from 'react'
+import Plants from './Plants'
 
 function App() {
   return (
@@ -6,7 +7,10 @@ function App() {
       <header className="header">
         <h1>My Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        <Plants plants={plants} />
+        {/* add your code here */}
+      </section>
     </>
   )
 }
