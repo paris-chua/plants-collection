@@ -2,9 +2,10 @@ import request from 'superagent'
 
 const plantsUrl = '/api/v1/plants/'
 
-export async function getPlants() {
-  const resp = await request.get(plantsUrl)
-  return resp.body
+export async function getPlantsApi() {
+  const res = await request.get(plantsUrl)
+  console.log(res.body)
+  return res.body
 }
 
 // export async function fetchWidget(newWidget) {
