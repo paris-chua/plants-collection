@@ -1,4 +1,4 @@
-import { getPlantsApi } from '../apis/apiClient'
+import { getPlantsApi, sendPlantApi } from '../apis/apiClient'
 
 export const DISPLAY_PLANTS = 'DISPLAY_PLANTS'
 export const ADD_PLANT = 'ADD_PLANT'
@@ -24,5 +24,13 @@ export function addNewPlant() {
   return {
     type: ADD_PLANT,
     payload: {},
+  }
+}
+
+export function sendNewPlant(data) {
+  return (dispatch) => {
+    return sendPlantApi(data).then((res) => {
+      dispatch(addNewPlant(res))
+    })
   }
 }

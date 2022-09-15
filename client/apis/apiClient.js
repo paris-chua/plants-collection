@@ -8,7 +8,7 @@ export async function getPlantsApi() {
   return res.body
 }
 
-// export async function fetchWidget(newWidget) {
-//   const resp = await request.post(widgetUrl).send(newWidget)
-//   return resp.body
-// }
+export async function sendPlantApi(newPlant) {
+  const resp = await request.post(plantsUrl).send(newPlant)
+  return resp.body
+}
