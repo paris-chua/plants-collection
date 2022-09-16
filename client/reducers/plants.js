@@ -1,4 +1,4 @@
-import { DISPLAY_PLANTS } from '../actions/plants.js'
+import { DISPLAY_PLANTS, ADD_PLANT } from '../actions/plants.js'
 
 // const initialState = [
 //   {
@@ -14,6 +14,8 @@ const plantReducer = (state = [], action) => {
   switch (type) {
     case DISPLAY_PLANTS:
       return payload
+    case ADD_PLANT:
+      return [...state, payload]
     default:
       return state
   }

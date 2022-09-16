@@ -20,10 +20,10 @@ export function fetchPlants() {
   }
 }
 
-export function addNewPlant() {
+export function addNewPlant(plant) {
   return {
     type: ADD_PLANT,
-    payload: {},
+    payload: plant,
   }
 }
 

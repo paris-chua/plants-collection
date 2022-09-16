@@ -9,11 +9,16 @@ function getPlants(db = cnx) {
   return db('iPlants').select()
 }
 
-function addPlant(db = cnx) {
-  return db('iPlants').insert()
+function addPlant(plant, db = cnx) {
+  return db('iPlants').insert(plant)
+}
+
+function getThePlant(id, db = cnx) {
+  return db('iPlants').where('id', id).first()
 }
 
 module.exports = {
   getPlants,
   addPlant,
+  getThePlant,
 }
