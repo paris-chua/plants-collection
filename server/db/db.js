@@ -14,11 +14,16 @@ function addPlant(plant, db = cnx) {
 }
 
 function getThePlant(id, db = cnx) {
-  return db('iPlants').where('id', id).first()
+  return db('iPlants').select().where('id', id)
+}
+
+function removeAPlant(id, db = cnx) {
+  return db('iPlants').delete().where('id', id)
 }
 
 module.exports = {
   getPlants,
   addPlant,
   getThePlant,
+  removeAPlant,
 }

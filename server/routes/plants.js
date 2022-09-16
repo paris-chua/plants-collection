@@ -19,12 +19,24 @@ router.post('/', async (req, res) => {
   const data = { common_name, botanical_name, img }
   try {
     const plantArr = await db.addPlant(data)
-    console.log(data, plantArr)
+    // console.log(data, plantArr)
     const id = plantArr[0]
     const newPlant = await db.getThePlant(id)
     res.json(newPlant)
   } catch (err) {
-    res.status(501).json({ message: err.message })
+    res.status(500).json({ message: err.message })
+  }
+})
+
+router.delete('/:id/delete', async (req, res) => {
+  const id = req.params.id
+  console.log(id)
+
+  try {
+    const removedWidget = await db.removeAPlant(id)
+    res.json(removedWidget)
+  } catch (err) {
+    console.log(err.message)
   }
 })
 

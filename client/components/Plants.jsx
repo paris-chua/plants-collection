@@ -22,6 +22,10 @@ function Plants() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const handleClick = (e) => {
+    dispatch()
+  }
+
   return (
     <>
       <form>
@@ -48,6 +52,7 @@ function Plants() {
           <img src={e.img} alt="plant" width="400px" height="auto" />
           <p>Common Name: {e.common_name}</p>
           <p>Botanical Name: {e.botanical_name}</p>
+          <button onClick={handleClick}>Remove</button>
         </div>
       ))}
     </>
