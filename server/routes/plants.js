@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  console.log('hello', req.body)
+  // console.log('hello', req.body)
   const { common_name, botanical_name, img } = req.body
   const data = { common_name, botanical_name, img }
   try {
@@ -28,13 +28,12 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:id/delete', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const id = req.params.id
-  console.log(id)
-
+  console.log('routes', id)
   try {
-    const removedWidget = await db.removeAPlant(id)
-    res.json(removedWidget)
+    const removedPlant = await db.removeAPlant(id)
+    res.json(removedPlant)
   } catch (err) {
     console.log(err.message)
   }

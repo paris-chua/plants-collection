@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchPlants, sendNewPlant } from '../actions/plants'
+import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
 
 function Plants() {
   const plants = useSelector((redux) => redux.plants)
-  // console.log(plants)
+  console.log('from component', plants)
+  // const aPlant = { plant.id, plant.common_name, plant. }
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -16,14 +17,14 @@ function Plants() {
     dispatch(sendNewPlant(formData))
   }
 
-  const [formData, setFormData] = useState()
+  const [formData, setFormData] = useState([])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleClick = (e) => {
-    dispatch()
+  const handleClick = () => {
+    dispatch(deletePlant())
   }
 
   return (

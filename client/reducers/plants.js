@@ -1,4 +1,4 @@
-import { DISPLAY_PLANTS, ADD_PLANT } from '../actions/plants.js'
+import { DISPLAY_PLANTS, ADD_PLANT, DELETE_PLANT } from '../actions/plants.js'
 
 // const initialState = [
 //   {
@@ -16,6 +16,8 @@ const plantReducer = (state = [], action) => {
       return payload
     case ADD_PLANT:
       return [...state, payload]
+    case DELETE_PLANT:
+      return state.filter((item) => item.id !== payload)
     default:
       return state
   }

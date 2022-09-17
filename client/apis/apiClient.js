@@ -9,7 +9,13 @@ export async function getPlantsApi() {
 }
 
 export async function sendPlantApi(newPlant) {
-  const resp = await request.post(plantsUrl).send(newPlant)
-  console.log('hi', resp)
-  return resp.body
+  const res = await request.post(plantsUrl).send(newPlant)
+  console.log('hi', res)
+  return res.body
+}
+
+export async function deletePlantApi(id) {
+  const res = await request.delete(`${plantsUrl}${id}`)
+  console.log('api', res.body)
+  return res.body
 }

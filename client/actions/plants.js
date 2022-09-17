@@ -1,7 +1,8 @@
-import { getPlantsApi, sendPlantApi } from '../apis/apiClient'
+import { deletePlantApi, getPlantsApi, sendPlantApi } from '../apis/apiClient'
 
 export const DISPLAY_PLANTS = 'DISPLAY_PLANTS'
 export const ADD_PLANT = 'ADD_PLANT'
+export const DELETE_PLANT = 'DELETE_PLANT'
 
 export function displayPlants(arr) {
   return {
@@ -31,6 +32,22 @@ export function sendNewPlant(data) {
   return (dispatch) => {
     return sendPlantApi(data).then((res) => {
       dispatch(addNewPlant(res))
+    })
+  }
+}
+
+export function removePlant(id) {
+  console.log('from action', id)
+  return {
+    type: DELETE_PLANT,
+    payload: id,
+  }
+}
+
+export function deletePlant(id) {
+  return (dispatch) => {
+    return deletePlantApi(id).then((id) => {
+      dispatch(removePlant(id))
     })
   }
 }
