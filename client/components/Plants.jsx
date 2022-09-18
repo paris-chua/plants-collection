@@ -5,7 +5,6 @@ import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
 function Plants() {
   const plants = useSelector((redux) => redux.plants)
   console.log('from component', plants)
-  // const aPlant = { plant.id, plant.common_name, plant. }
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -21,10 +20,6 @@ function Plants() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const handleClick = () => {
-    dispatch(deletePlant())
   }
 
   return (
@@ -48,12 +43,12 @@ function Plants() {
         <input id="img" type="text" name="img" onChange={handleChange} />
         <button onClick={handleSubmit}>Add a plant</button>
       </form>
-      {plants.map((e) => (
-        <div key={e.id}>
-          <img src={e.img} alt="plant" width="400px" height="auto" />
-          <p>Common Name: {e.common_name}</p>
-          <p>Botanical Name: {e.botanical_name}</p>
-          <button onClick={handleClick}>Remove</button>
+      {plants.map(({ id, common_name, botanical_name, img }) => (
+        <div key={id}>
+          <img src={img} alt="plant" width="400px" height="auto" />
+          <p>Common Name: {common_name}</p>
+          <p>Botanical Name: {botanical_name}</p>
+          <button onClick={() => dispatch(deletePlant(id))}>Remove</button>
         </div>
       ))}
     </>
