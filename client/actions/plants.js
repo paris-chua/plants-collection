@@ -45,8 +45,9 @@ export function removePlant(id) {
 }
 
 export function deletePlant(id) {
+  console.log(id)
   return (dispatch) => {
-    return deletePlantApi(id).then((id) => {
+    return deletePlantApi(id).then(() => {
       dispatch(removePlant(id))
     })
   }

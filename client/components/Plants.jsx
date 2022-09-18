@@ -4,23 +4,22 @@ import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
 
 function Plants() {
   const plants = useSelector((redux) => redux.plants)
+  const [formData, setFormData] = useState([])
   console.log('from component', plants)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchPlants())
-  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(sendNewPlant(formData))
   }
 
-  const [formData, setFormData] = useState([])
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
+  useEffect(() => {
+    dispatch(fetchPlants())
+  }, [])
 
   return (
     <>
