@@ -14,7 +14,7 @@ function addPlant(plant, db = cnx) {
 }
 
 function getThePlant(id, db = cnx) {
-  return db('iPlants').select().where('id', id)
+  return db('iPlants').select().where('id', id).first()
 }
 
 function removeAPlant(id, db = cnx) {

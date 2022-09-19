@@ -5,7 +5,7 @@ import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
 function Plants() {
   const plants = useSelector((redux) => redux.plants)
   const [formData, setFormData] = useState([])
-  console.log('from component', plants)
+  // console.log('from component', plants)
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
