@@ -21,9 +21,14 @@ function removeAPlant(id, db = cnx) {
   return db('iPlants').delete().where('id', id)
 }
 
+function editPlant(id, newInfo, db = cnx) {
+  return db('iPlants').update(newInfo).where(id, 'id')
+}
+
 module.exports = {
   getPlants,
   addPlant,
   getThePlant,
   removeAPlant,
+  editPlant,
 }
