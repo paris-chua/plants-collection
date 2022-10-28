@@ -40,8 +40,11 @@ function Plants() {
         />
         <label htmlFor="img">Image: </label>
         <input id="img" type="text" name="img" onChange={handleChange} />
+        <label htmlFor="water">Last watered: </label>
+        <input id="water" type="date" name="water" onChange={handleChange} />
         <button onClick={handleSubmit}>Add a plant</button>
       </form>
+
       {plants.map(({ id, common_name, botanical_name, img }) => (
         <div key={id}>
           <img src={img} alt="plant" width="400px" height="auto" />
