@@ -41,18 +41,41 @@ function Plants() {
         <label htmlFor="img">Image: </label>
         <input id="img" type="text" name="img" onChange={handleChange} />
         <label htmlFor="water">Last watered: </label>
-        <input id="water" type="date" name="water" onChange={handleChange} />
+        <input
+          id="water"
+          type="date"
+          name="last_watered"
+          onChange={handleChange}
+        />
+        <label htmlFor="add_care">Additional care: </label>
+        <input
+          id="add_care"
+          type="text"
+          name="additional_care"
+          onChange={handleChange}
+        />
         <button onClick={handleSubmit}>Add a plant</button>
       </form>
 
-      {plants.map(({ id, common_name, botanical_name, img }) => (
-        <div key={id}>
-          <img src={img} alt="plant" width="400px" height="auto" />
-          <p>Common Name: {common_name}</p>
-          <p>Botanical Name: {botanical_name}</p>
-          <button onClick={() => dispatch(deletePlant(id))}>Remove</button>
-        </div>
-      ))}
+      {plants.map(
+        ({
+          id,
+          common_name,
+          botanical_name,
+          img,
+          last_watered,
+          additional_care,
+        }) => (
+          <div key={id}>
+            <img src={img} alt="plant" width="400px" height="auto" />
+            <p>Common Name: {common_name}</p>
+            <p>Botanical Name: {botanical_name}</p>
+            <p>Last Watered: {last_watered}</p>
+            <p>Additional Care: {additional_care}</p>
+            <button onClick={() => dispatch(deletePlant(id))}>Remove</button>
+          </div>
+        )
+      )}
     </>
   )
 }

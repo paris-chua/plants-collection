@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // console.log('hello', req.body)
-  const { common_name, botanical_name, img } = req.body
-  const data = { common_name, botanical_name, img }
+  const { common_name, botanical_name, img, last_watered, additional_care } = req.body
+  const data = { common_name, botanical_name, img, last_watered, additional_care }
   try {
     const plantArr = await db.addPlant(data)
     // console.log(data, plantArr)
