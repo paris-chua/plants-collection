@@ -17,6 +17,11 @@ function Plants() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const handleEdit = (e) => {
+    e.preventDefault()
+    dispatch()
+  }
+
   useEffect(() => {
     dispatch(fetchPlants())
   }, [])
@@ -68,6 +73,7 @@ function Plants() {
         }) => (
           <div key={id}>
             <img src={img} alt="plant" width="400px" height="auto" />
+            <button onClick={handleEdit}>Edit</button>
             <p>Common Name: {common_name}</p>
             <p>Botanical Name: {botanical_name}</p>
             <p>Last Watered: {last_watered}</p>
