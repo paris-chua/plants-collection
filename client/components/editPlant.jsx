@@ -28,59 +28,53 @@ function Plants() {
 
   return (
     <>
-      <form>
-        <label htmlFor="common">Common Name: </label>
-        <input
-          id="common"
-          type="text"
-          name="common_name"
-          onChange={handleChange}
-        />
-        <label htmlFor="botanical">Botanical Name: </label>
-        <input
-          id="botanical"
-          type="text"
-          name="botanical_name"
-          onChange={handleChange}
-        />
-        <label htmlFor="img">Image: </label>
-        <input id="img" type="text" name="img" onChange={handleChange} />
-        <label htmlFor="water">Last watered: </label>
-        <input
-          id="water"
-          type="date"
-          name="last_watered"
-          onChange={handleChange}
-        />
-        <label htmlFor="add_care">Additional care: </label>
-        <input
-          id="add_care"
-          type="text"
-          name="additional_care"
-          onChange={handleChange}
-        />
-        <button onClick={handleSubmit}>Update</button>
-      </form>
-
-      {plants.map(
-        ({
-          id,
-          common_name,
-          botanical_name,
-          img,
-          last_watered,
-          additional_care,
-        }) => (
-          <div key={id}>
-            <img src={img} alt="plant" width="400px" height="auto" />
-            <p>Common Name: {common_name}</p>
-            <p>Botanical Name: {botanical_name}</p>
-            <p>Last Watered: {last_watered}</p>
-            <p>Additional Care: {additional_care}</p>
+      {plants.map((plant) => (
+        <>
+          <div key={plant.id}>
+            <img src={plant?.img} alt="plant" width="400px" height="auto" />
+            <p>Common Name: {plant?.common_name}</p>
+            <p>Botanical Name: {plant?.botanical_name}</p>
+            <p>Last Watered: {plant?.last_watered}</p>
+            <p>Additional Care: {plant?.additional_care}</p>
           </div>
-          <div><button onClick={handleEdit}>Edit</button></div>
-        )
-      )}
+          <form>
+            <label htmlFor="common">Common Name: </label>
+            <input
+              id="common"
+              type="text"
+              name="common_name"
+              onChange={handleChange}
+            />
+            <label htmlFor="botanical">Botanical Name: </label>
+            <input
+              id="botanical"
+              type="text"
+              name="botanical_name"
+              onChange={handleChange}
+            />
+            <label htmlFor="img">Image: </label>
+            <input id="img" type="text" name="img" onChange={handleChange} />
+            <label htmlFor="water">Last watered: </label>
+            <input
+              id="water"
+              type="date"
+              name="last_watered"
+              onChange={handleChange}
+            />
+            <label htmlFor="add_care">Additional care: </label>
+            <input
+              id="add_care"
+              type="text"
+              name="additional_care"
+              onChange={handleChange}
+            />
+            <button onClick={handleSubmit}>Update</button>
+          </form>
+        </>
+      ))}
+      <div>
+        <button onClick={handleEdit}>Edit</button>
+      </div>
     </>
   )
 }
