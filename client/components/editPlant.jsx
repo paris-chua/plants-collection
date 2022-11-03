@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { editedPlant, fetchPlants, sendNewPlant } from '../actions/plants'
+import {} from '../actions/plants'
 
-function Plants() {
+function editPlant() {
   const plants = useSelector((redux) => redux.plants)
-  const [formData, setFormData] = useState([])
-  // console.log('from component', plants)
   const dispatch = useDispatch()
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(sendNewPlant(formData))
-  }
+  const [isUpdate, setIsUpdate] = useState(false)
+  const [editedPlant, setEditedPlant] = useState({
+    id: '',
+    img: '',
+    common_name: '',
+    botanical_name: '',
+    last_watered: '',
+    additional_care: '',
+  })
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setEditedPlant({ ...editedPlant, [e.target.name]: e.target.value })
   }
 
-  const handleEdit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     dispatch()
   }
 
-  useEffect(() => {
-    dispatch(fetchPlants())
-  }, [])
-
   return (
-    <>
-      {plants.map((plant) => (
-        <>
+    <div>
+      {isUpdate ? (
+        <div>
           <div key={plant.id}>
             <img src={plant?.img} alt="plant" width="400px" height="auto" />
             <p>Common Name: {plant?.common_name}</p>
@@ -70,12 +68,13 @@ function Plants() {
             />
             <button onClick={handleSubmit}>Update</button>
           </form>
-        </>
-      ))}
-      <div>
-        <button onClick={handleEdit}>Edit</button>
-      </div>
-    </>
+        </div>
+      ) : (
+        <div></div>
+      )}
+      <button onClick={setIsUpdate(!isUpdate)}>Edit</button>
+    </div>
   )
 }
-export default Plants
+
+export default editPlant
