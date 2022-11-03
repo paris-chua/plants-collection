@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {} from '../actions/plants'
 
-function editPlant() {
-  const plants = useSelector((redux) => redux.plants)
+function editPlant(plant) {
   const dispatch = useDispatch()
   const [isUpdate, setIsUpdate] = useState(false)
   const [editedPlant, setEditedPlant] = useState({
