@@ -25,16 +25,16 @@ function EditPlant(plant) {
   }
 
   return (
-    <div>
+    <>
+      {/* <div key={plant.id}>
+        <img src={plant?.img} alt="plant" width="400px" height="auto" />
+        <p>Common Name: {plant?.common_name}</p>
+        <p>Botanical Name: {plant?.botanical_name}</p>
+        <p>Last Watered: {plant?.last_watered}</p>
+        <p>Additional Care: {plant?.additional_care}</p>
+      </div> */}
       {isUpdate ? (
         <div>
-          <div key={plant.id}>
-            <img src={plant?.img} alt="plant" width="400px" height="auto" />
-            <p>Common Name: {plant?.common_name}</p>
-            <p>Botanical Name: {plant?.botanical_name}</p>
-            <p>Last Watered: {plant?.last_watered}</p>
-            <p>Additional Care: {plant?.additional_care}</p>
-          </div>
           <form>
             <label htmlFor="common">
               {''}
@@ -98,7 +98,7 @@ function EditPlant(plant) {
         <div></div>
       )}
       <button onClick={setIsUpdate(!isUpdate)}>Edit</button>
-    </div>
+    </>
   )
 }
 

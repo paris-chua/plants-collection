@@ -9,7 +9,6 @@ function App() {
       </header>
       <section className="main">
         <Plants />
-
         {/* add your code here */}
       </section>
     </>
