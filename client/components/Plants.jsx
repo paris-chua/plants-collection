@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
-import editPlant from './editPlant'
+import EditPlant from './EditPlant'
 
 function Plants() {
   const plants = useSelector((redux) => redux.plants)
@@ -83,7 +83,7 @@ function Plants() {
           </div>
         )
       )}
-      <editPlant />
+      <EditPlant />
     </>
   )
 }
