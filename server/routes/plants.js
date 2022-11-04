@@ -15,8 +15,15 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // console.log('hello', req.body)
-  const { common_name, botanical_name, img, last_watered, additional_care } = req.body
-  const data = { common_name, botanical_name, img, last_watered, additional_care }
+  const { common_name, botanical_name, img, last_watered, additional_care } =
+    req.body
+  const data = {
+    common_name,
+    botanical_name,
+    img,
+    last_watered,
+    additional_care,
+  }
   try {
     const plantArr = await db.addPlant(data)
     // console.log(data, plantArr)
@@ -39,12 +46,11 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-router.patch('/:id/edit', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   const id = req.params.id
-  const newInfo = req.body.formData
+  const newInfo = req.body
   try {
-    await db.editPlant(id, newInfo)
-    const editedPlant = await db.getThePlant(id)
+    const editedPlant = await db.editPlant(id, newInfo)
     res.json(editedPlant)
   } catch (err) {
     console.log(err.message)

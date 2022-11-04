@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {} from '../actions/plants'
+import { fetchUpdatedPlant } from '../actions/plants'
 
 function EditPlant(plant) {
   // const plant = props.plants
@@ -21,7 +21,8 @@ function EditPlant(plant) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch()
+    dispatch(fetchUpdatedPlant(editedPlant, plant.id))
+    setIsUpdate(false)
   }
 
   return (

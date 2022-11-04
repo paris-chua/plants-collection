@@ -19,3 +19,8 @@ export async function deletePlantApi(id) {
   console.log('api', res.body)
   return res.body
 }
+
+export async function updatePlantApi(data, id) {
+  const res = await (await request.patch(`${plantsUrl}${id}`)).send(data)
+  return res.body
+}

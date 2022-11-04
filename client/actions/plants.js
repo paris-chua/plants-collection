@@ -1,8 +1,14 @@
-import { deletePlantApi, getPlantsApi, sendPlantApi } from '../apis/apiClient'
+import {
+  deletePlantApi,
+  getPlantsApi,
+  sendPlantApi,
+  updatePlantApi,
+} from '../apis/apiClient'
 
 export const DISPLAY_PLANTS = 'DISPLAY_PLANTS'
 export const ADD_PLANT = 'ADD_PLANT'
 export const DELETE_PLANT = 'DELETE_PLANT'
+export const UPDATE_PLANT = 'UPDATE_PLANT'
 
 export function displayPlants(arr) {
   return {
@@ -50,5 +56,17 @@ export function deletePlant(id) {
     return deletePlantApi(id).then(() => {
       dispatch(removePlant(id))
     })
+  }
+}
+
+export function updatePlant(plant) {
+  return {
+    type: UPDATE_PLANT,
+    payload: plant,
+  }
+}
+export function fetchUpdatedPlant(data, id) {
+  return (dispatch) => {
+    return updatePlantApi(data, id).then((res) => dispatch(updatePlant(res)))
   }
 }
