@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchUpdatedPlant } from '../actions/plants'
 
@@ -14,6 +14,9 @@ function EditPlant(plant) {
     last_watered: '',
     additional_care: '',
   })
+  const handleEdit = () => {
+    setIsUpdate(!isUpdate)
+  }
 
   const handleChange = (e) => {
     setEditedPlant({ ...editedPlant, [e.target.name]: e.target.value })
@@ -24,6 +27,10 @@ function EditPlant(plant) {
     dispatch(fetchUpdatedPlant(editedPlant, plant.id))
     setIsUpdate(false)
   }
+
+  // useEffect(() => {
+  //   setEditedPlant(plant)
+  // }, [])
 
   return (
     <>
@@ -44,7 +51,7 @@ function EditPlant(plant) {
                 id={plant.id}
                 type="text"
                 name="common_name"
-                defaultValue={plant.common_name}
+                value={plant.common_name}
                 onChange={handleChange}
               />
             </label>
@@ -98,7 +105,7 @@ function EditPlant(plant) {
       ) : (
         <div></div>
       )}
-      <button onClick={setIsUpdate(!isUpdate)}>Edit</button>
+      <button onClick={handleEdit}>Edit</button>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
 import EditPlant from './EditPlant'
@@ -16,11 +16,6 @@ function Plants() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const handleEdit = (e) => {
-    e.preventDefault()
-    dispatch()
   }
 
   useEffect(() => {
@@ -74,16 +69,15 @@ function Plants() {
         }) => (
           <div key={id}>
             <img src={img} alt="plant" width="400px" height="auto" />
-            <button onClick={handleEdit}>Edit</button>
             <p>Common Name: {common_name}</p>
             <p>Botanical Name: {botanical_name}</p>
             <p>Last Watered: {last_watered}</p>
             <p>Additional Care: {additional_care}</p>
             <button onClick={() => dispatch(deletePlant(id))}>Remove</button>
+            <EditPlant />
           </div>
         )
       )}
-      <EditPlant />
     </>
   )
 }
