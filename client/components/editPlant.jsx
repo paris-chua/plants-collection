@@ -14,6 +14,7 @@ function EditPlant(plant) {
     last_watered: '',
     additional_care: '',
   })
+
   const handleEdit = () => {
     setIsUpdate(!isUpdate)
   }
