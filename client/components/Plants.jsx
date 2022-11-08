@@ -60,26 +60,19 @@ function Plants() {
         <button onClick={handleSubmit}>Add a plant</button>
       </form>
 
-      {plants.map(
-        ({
-          id,
-          common_name,
-          botanical_name,
-          img,
-          last_watered,
-          additional_care,
-        }) => (
-          <div key={id}>
-            <img src={img} alt="plant" width="400px" height="auto" />
-            <p>Common Name: {common_name}</p>
-            <p>Botanical Name: {botanical_name}</p>
-            <p>Last Watered: {last_watered}</p>
-            <p>Additional Care: {additional_care}</p>
-            <button onClick={() => dispatch(deletePlant(id))}>Remove</button>
-            <EditPlant props={id} />
-          </div>
-        )
-      )}
+      {plants.map((plant) => (
+        <div key={plant.id}>
+          <img src={plant.img} alt="plant" width="400px" height="auto" />
+          <p>Common Name: {plant.common_name}</p>
+          <p>Botanical Name: {plant.botanical_name}</p>
+          <p>Last Watered: {plant.last_watered}</p>
+          <p>Additional Care: {plant.additional_care}</p>
+          <button onClick={() => dispatch(deletePlant(plant.id))}>
+            Remove
+          </button>
+          <EditPlant props={plant} />
+        </div>
+      ))}
     </>
   )
 }

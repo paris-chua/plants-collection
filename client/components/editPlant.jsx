@@ -45,7 +45,7 @@ function EditPlant(plant) {
       {isUpdate ? (
         <div>
           <form>
-            <input type="hidden" id="id" name="id" value={plant.id} />
+            <input type="hidden" name="id" value={plant.id} />
             <label htmlFor="common">
               {''}
               Common Name:
