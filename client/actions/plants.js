@@ -59,12 +59,13 @@ export function deletePlant(id) {
   }
 }
 
-export function updatePlant(plant) {
+export function updatePlant(data) {
   return {
     type: UPDATE_PLANT,
-    payload: plant,
+    payload: data,
   }
 }
+
 export function fetchUpdatedPlant(data, id) {
   return (dispatch) => {
     return updatePlantApi(data, id).then((res) => dispatch(updatePlant(res)))
