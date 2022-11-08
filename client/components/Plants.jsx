@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deletePlant, fetchPlants, sendNewPlant } from '../actions/plants'
+// action creators are imported into components
 import EditPlant from './EditPlant'
 
 function Plants() {
   const plants = useSelector((redux) => redux.plants)
-  const [formData, setFormData] = useState([])
   // console.log('from component', plants)
+  // 'plants' is an array of objects
+  const [formData, setFormData] = useState([])
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
@@ -74,7 +76,7 @@ function Plants() {
             <p>Last Watered: {last_watered}</p>
             <p>Additional Care: {additional_care}</p>
             <button onClick={() => dispatch(deletePlant(id))}>Remove</button>
-            <EditPlant />
+            <EditPlant props={id} />
           </div>
         )
       )}

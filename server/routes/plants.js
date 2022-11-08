@@ -49,8 +49,10 @@ router.delete('/:id', async (req, res) => {
 router.patch('/:id', async (req, res) => {
   const id = req.params.id
   const newInfo = req.body
+  console.log(newInfo, 'from req.body')
   try {
     const editedPlant = await db.editPlant(id, newInfo)
+    console.log(editedPlant)
     res.json(editedPlant)
   } catch (err) {
     console.log(err.message)

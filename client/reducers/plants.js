@@ -4,6 +4,7 @@ import {
   DELETE_PLANT,
   UPDATE_PLANT,
 } from '../actions/plants.js'
+// imported named constants into reducers
 
 // const initialState = [
 //   {

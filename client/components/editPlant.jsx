@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { fetchUpdatedPlant } from '../actions/plants'
 
 function EditPlant(plant) {
-  // const plant = props.plants
+  console.log(plant, 'from editplant')
   const dispatch = useDispatch()
   const [isUpdate, setIsUpdate] = useState(false)
   const [editedPlant, setEditedPlant] = useState({
@@ -45,11 +45,12 @@ function EditPlant(plant) {
       {isUpdate ? (
         <div>
           <form>
+            <input type="hidden" id="id" name="id" value={plant.id} />
             <label htmlFor="common">
               {''}
               Common Name:
               <input
-                id={plant.id}
+                // id={plant.id}
                 type="text"
                 name="common_name"
                 value={plant.common_name}
@@ -60,7 +61,7 @@ function EditPlant(plant) {
               {''}
               Botanical Name:
               <input
-                id={plant.id}
+                // id={plant.id}
                 type="text"
                 name="botanical_name"
                 defaultValue={plant.botanical_name}
@@ -71,7 +72,7 @@ function EditPlant(plant) {
               {''}
               Image:
               <input
-                id={plant.id}
+                // id={plant.id}
                 type="text"
                 name="img"
                 defaultValue={plant.img}
@@ -82,7 +83,7 @@ function EditPlant(plant) {
               {''}
               Last watered:
               <input
-                id={plant.last_watered}
+                // id={plant.last_watered}
                 type="date"
                 name="last_watered"
                 defaultValue={plant.last_watered}
@@ -93,7 +94,7 @@ function EditPlant(plant) {
               {''}
               Additional care:
               <input
-                id={plant.id}
+                // id={plant.id}
                 type="text"
                 name="additional_care"
                 defaultValue={plant.additional_care}
