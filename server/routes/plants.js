@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     const plantsArr = await db.getPlants()
-    // console.log(plantsArr)
+    console.log(plantsArr, 'plantsArr from routes')
     res.json(plantsArr)
   } catch (err) {
     res.status(500).json({ message: err.message })
@@ -46,16 +46,20 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-router.patch('/:id', async (req, res) => {
-  const id = req.params.id
+router.patch('/', async (req, res) => {
+  // const id = req.params.id
   const newInfo = req.body
+  const id = newInfo.id
+  console.log(id, 'from routes')
   console.log(newInfo, 'from req.body')
   try {
-    const editedPlant = await db.editPlant(id, newInfo)
-    console.log(editedPlant)
-    res.json(editedPlant)
+    const editedPlant = await db.editPlant(newInfo)
+    console.log(editedPlant, 'from routes')
+    const updatedPlant = await db.getThePlant(id)
+    console.log(updatedPlant, 'from routes')
+    res.json(updatedPlant)
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message, 'from routes')
   }
 })
 

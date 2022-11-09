@@ -70,7 +70,7 @@ function Plants() {
           <button onClick={() => dispatch(deletePlant(plant.id))}>
             Remove
           </button>
-          <EditPlant props={plant} />
+          <EditPlant {...plant} />
         </div>
       ))}
     </>

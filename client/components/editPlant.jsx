@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchUpdatedPlant } from '../actions/plants'
 
-function EditPlant(plant) {
-  console.log(plant, 'from editplant')
+function EditPlant(props) {
+  // console.log(plant, 'from editplant')
+  const plantId = props.id
+  console.log(plantId, 'from editplant')
   const dispatch = useDispatch()
   const [isUpdate, setIsUpdate] = useState(false)
-  const [editedPlant, setEditedPlant] = useState({
-    id: '',
-    img: '',
-    common_name: '',
-    botanical_name: '',
-    last_watered: '',
-    additional_care: '',
-  })
+  const [editedPlant, setEditedPlant] = useState(props)
 
   const handleEdit = () => {
     setIsUpdate(!isUpdate)
@@ -25,13 +20,9 @@ function EditPlant(plant) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(fetchUpdatedPlant(editedPlant, plant.id))
+    dispatch(fetchUpdatedPlant(editedPlant, plantId.toString()))
     setIsUpdate(false)
   }
-
-  // useEffect(() => {
-  //   setEditedPlant(plant)
-  // }, [])
 
   return (
     <>
@@ -45,7 +36,7 @@ function EditPlant(plant) {
       {isUpdate ? (
         <div>
           <form>
-            <input type="hidden" name="id" value={plant.id} />
+            {/* <input type="hidden" name="id" value={plant.id} /> */}
             <label htmlFor="common">
               {''}
               Common Name:
@@ -53,7 +44,7 @@ function EditPlant(plant) {
                 // id={plant.id}
                 type="text"
                 name="common_name"
-                value={plant.common_name}
+                value={props.common_name}
                 onChange={handleChange}
               />
             </label>
@@ -61,10 +52,10 @@ function EditPlant(plant) {
               {''}
               Botanical Name:
               <input
-                // id={plant.id}
+                // id={props.id}
                 type="text"
                 name="botanical_name"
-                defaultValue={plant.botanical_name}
+                defaultValue={props.botanical_name}
                 onChange={handleChange}
               />
             </label>
@@ -72,10 +63,10 @@ function EditPlant(plant) {
               {''}
               Image:
               <input
-                // id={plant.id}
+                // id={props.id}
                 type="text"
                 name="img"
-                defaultValue={plant.img}
+                defaultValue={props.img}
                 onChange={handleChange}
               />
             </label>
@@ -86,7 +77,7 @@ function EditPlant(plant) {
                 // id={plant.last_watered}
                 type="date"
                 name="last_watered"
-                defaultValue={plant.last_watered}
+                defaultValue={props.last_watered}
                 onChange={handleChange}
               />
             </label>
@@ -97,7 +88,7 @@ function EditPlant(plant) {
                 // id={plant.id}
                 type="text"
                 name="additional_care"
-                defaultValue={plant.additional_care}
+                defaultValue={props.additional_care}
                 onChange={handleChange}
               />
             </label>
