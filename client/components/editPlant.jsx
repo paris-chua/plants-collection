@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { fetchUpdatedPlant } from '../actions/plants'
 
 function EditPlant(props) {
-  // console.log(plant, 'from editplant')
+  // console.log(props, 'from editplant')
   const plantId = props.id
   console.log(plantId, 'from editplant')
   const dispatch = useDispatch()
@@ -38,13 +38,13 @@ function EditPlant(props) {
           <form>
             {/* <input type="hidden" name="id" value={plant.id} /> */}
             <label htmlFor="common">
-              {''}
+              {/* {''} */}
               Common Name:
               <input
                 // id={plant.id}
                 type="text"
                 name="common_name"
-                value={props.common_name}
+                defaultValue={props.common_name}
                 onChange={handleChange}
               />
             </label>
@@ -69,6 +69,7 @@ function EditPlant(props) {
                 defaultValue={props.img}
                 onChange={handleChange}
               />
+              {/* expecting a route/path when editing, otherwise 404 error appears when putting other strings  */}
             </label>
             <label htmlFor="water">
               {''}
